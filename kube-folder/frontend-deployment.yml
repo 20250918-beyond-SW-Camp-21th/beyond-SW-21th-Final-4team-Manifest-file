@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: o2ppo/freebrfront001:19-3a629f2
+        image: o2ppo/freebrfront001:20-704ba56
         ports:
         - containerPort: 8080
