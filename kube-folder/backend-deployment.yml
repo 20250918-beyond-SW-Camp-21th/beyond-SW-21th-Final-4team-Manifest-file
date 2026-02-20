@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: o2ppo/freebrback001:latest # Jenkins 파이프라인이 자동으로 업데이트함
+        ports:
+        - containerPort: 8080
+        env:
+        - name: REDIS_HOST
+          value: "redis-service" # 
+        - name: RABBIT_HOST
+          value: "rabbitmq-service" # 
+        - name: PYTHON_AI_URL
+          value: "http://python-ai-service:8000" # 
